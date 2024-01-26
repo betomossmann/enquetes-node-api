@@ -8,7 +8,8 @@
     "test:u": "vitest -u",
     "test:ui": "vitest --ui",
     "coverage": "vitest run --coverage",
-    "lint:fix": "eslint src --ext .ts --fix",
+    "lint": "eslint .",
+    "lint:fix": "pnpm lint -- --fix",
     "prepare": "husky"
   },
   "keywords": [
