@@ -4,9 +4,12 @@
   "description": "API para enquetes, criada em nodejs com typescript, TDD, Clean Arch, Design Patterns and SOLID principles",
   "main": "index.js",
   "scripts": {
-    "test": "vitest -u",
+    "test": "vitest",
+    "test:u": "vitest -u",
     "test:ui": "vitest --ui",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "prepare": "husky"
   },
   "keywords": [
     "clean architecture",
@@ -33,7 +36,10 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "git-commit-msg-linter": "^5.0.6",
     "happy-dom": "^13.3.1",
+    "husky": "^9.0.6",
+    "lint-staged": "^15.2.0",
     "typescript": "^5.3.3",
     "vitest": "^1.2.1"
   }
