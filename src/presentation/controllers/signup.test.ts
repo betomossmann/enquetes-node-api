@@ -1,3 +1,5 @@
+import { type AccountModel } from '@/domain/models'
+import { type AddAccount, type AddAccountModel } from '@/domain/usecases'
 import { SignUpController } from '@/presentation/controllers'
 import { InvalidParamError, MissingParamError, ServerError } from '@/presentation/errors'
 import { type EmailValidator } from '@/presentation/protocols'
@@ -7,6 +9,7 @@ import { describe, expect, it, vi } from 'vitest'
 interface SutTypes {
   sut: SignUpController
   emailValidatorStub: EmailValidator
+  addAccountStub: AddAccount
 }
 
 const makeEmailValidator = (): EmailValidator => {
@@ -18,10 +21,27 @@ const makeEmailValidator = (): EmailValidator => {
   return new EmailValidatorStub()
 }
 
+const makeAddAccount = (): AddAccount => {
+  class AddAccountStub implements AddAccount {
+    add(account: AddAccountModel): AccountModel {
+      const fakeAccount = {
+        email: 'valid_email@mail.com',
+        id: 'valid_id',
+        name: 'valid_name',
+        password: 'valid_password'
+      }
+      return fakeAccount
+    }
+  }
+  return new AddAccountStub()
+}
+
 const makeSut = (): SutTypes => {
   const emailValidatorStub = makeEmailValidator()
-  const sut = new SignUpController(emailValidatorStub)
+  const addAccountStub = makeAddAccount()
+  const sut = new SignUpController(emailValidatorStub, addAccountStub)
   return {
+    addAccountStub,
     emailValidatorStub,
     sut
   }
@@ -135,6 +155,26 @@ describe('SignUp Controller', () => {
 
     sut.handle(httpRequest)
     expect(isValidSpy).toHaveBeenCalledWith('any_email@mail.com')
+  })
+
+  it('Should call AddAccount with correct values', () => {
+    const { sut, addAccountStub } = makeSut()
+    const addSpy = vi.spyOn(addAccountStub, 'add')
+    const httpRequest = {
+      body: {
+        email: 'any_email@mail.com',
+        name: 'any_name',
+        password: 'any_password',
+        passwordConfirmation: 'any_password'
+      }
+    }
+
+    sut.handle(httpRequest)
+    expect(addSpy).toHaveBeenCalledWith({
+      email: 'any_email@mail.com',
+      name: 'any_name',
+      password: 'any_password'
+    })
   })
 
   it('Should return 500 if EmailValidator throws', () => {
