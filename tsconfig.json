@@ -22,5 +22,5 @@
     "experimentalDecorators": true
   },
   "include": ["src", "tests"],
-  "exclude": ["vitest.config.ts"]
+  "exclude": []
 }

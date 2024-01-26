@@ -1,8 +1,7 @@
+import { SignUpController } from '@/presentation/controllers'
+import { MissingParamError } from '@/presentation/errors'
+
 import { describe, expect, it } from 'vitest'
-
-import { MissingParamError } from '../errors/missing-param-error'
-
-import { SignUpController } from './signup'
 
 const makeSut = (): SignUpController => {
   return new SignUpController()
