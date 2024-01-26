@@ -2,7 +2,7 @@ import { type AccountModel } from '@/domain/models'
 import { type AddAccount, type AddAccountModel } from '@/domain/usecases'
 import { SignUpController } from '@/presentation/controllers'
 import { InvalidParamError, MissingParamError, ServerError } from '@/presentation/errors'
-import { type EmailValidator } from '@/presentation/protocols'
+import { type EmailValidator } from '@/validation/protocols'
 
 import { describe, expect, it, vi } from 'vitest'
 
