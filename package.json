@@ -4,7 +4,7 @@
   "description": "API in NodeJs, Typescript using TDD, Clean Architecture, Design Patterns and SOLID",
   "main": "index.js",
   "scripts": {
-    "test": "vitest --passWithNoTests",
+    "test": "vitest --passWithNoTests --silent",
     "test:u": "vitest -u",
     "test:ui": "vitest --ui",
     "test:staged": "vitest related --run",

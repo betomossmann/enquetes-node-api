@@ -4,3 +4,4 @@ coverage
 ./data
 requirements
 vitest.config.ts
+tsconfig-build.json
