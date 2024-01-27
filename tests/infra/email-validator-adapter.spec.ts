@@ -1,11 +1,29 @@
 import { EmailValidatorAdapter } from '@/infra/validators'
 
-import { describe, expect, it } from 'vitest'
+import validator from 'validator'
+import { describe, expect, it, vi } from 'vitest'
+
+vi.mock('validator', async (importOriginal) => {
+  const actual = await importOriginal()
+  return {
+    ...(actual as object),
+    isEmail(): boolean {
+      return true
+    }
+  }
+})
 
 describe('EmailValidator Adapter', () => {
   it('Should return false if validator returns false', () => {
     const sut = new EmailValidatorAdapter()
+    vi.spyOn(validator, 'isEmail').mockReturnValueOnce(false)
     const isValid = sut.isValid('invalid_email@mail.com')
     expect(isValid).toBe(false)
+  })
+
+  it('Should return true if validator returns true', () => {
+    const sut = new EmailValidatorAdapter()
+    const isValid = sut.isValid('valid_email@mail.com')
+    expect(isValid).toBe(true)
   })
 })
