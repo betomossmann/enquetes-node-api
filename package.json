@@ -1,7 +1,7 @@
 {
   "name": "enquetes-node-api",
   "version": "0.0.1",
-  "description": "API para enquetes, criada em nodejs com typescript, TDD, Clean Arch, Design Patterns and SOLID principles",
+  "description": "API in NodeJs, Typescript using TDD, Clean Architecture, Design Patterns and SOLID",
   "main": "index.js",
   "scripts": {
     "test": "vitest --passWithNoTests",
