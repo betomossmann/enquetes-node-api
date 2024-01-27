@@ -1,18 +1,32 @@
+import { type Encrypter } from '@/data/protocols/cryptography'
 import { DbAddAccount } from '@/data/usecases'
 
 import { describe, expect, it, vi } from 'vitest'
 
+type SutTypes = {
+  sut: DbAddAccount
+  encryptStub: Encrypter
+}
+
+const makeSut = (): SutTypes => {
+  class EncrypterStub {
+    async encrypt(value: string): Promise<string> {
+      return new Promise((resolve) => {
+        resolve('hashed_password')
+      })
+    }
+  }
+  const encryptStub = new EncrypterStub()
+  const sut = new DbAddAccount(encryptStub)
+  return {
+    encryptStub,
+    sut
+  }
+}
+
 describe('DbAddAccount Usecase', () => {
   it('Should call Encrypter with correct password', async () => {
-    class EncrypterStub {
-      async encrypt(value: string): Promise<string> {
-        return new Promise((resolve) => {
-          resolve('hashed_password')
-        })
-      }
-    }
-    const encryptStub = new EncrypterStub()
-    const sut = new DbAddAccount(encryptStub)
+    const { sut, encryptStub } = makeSut()
     const encryptSpy = vi.spyOn(encryptStub, 'encrypt')
     const accountData = {
       email: 'valid_email@mail.com',
