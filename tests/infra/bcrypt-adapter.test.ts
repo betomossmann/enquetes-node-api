@@ -30,4 +30,11 @@ describe('Bcrypt Adapter', () => {
     const hash = await sut.encrypt('any_value')
     expect(hash).toBe('hash')
   })
+
+  it('Should throws if bcrypt throws', async () => {
+    const sut = makeSut()
+    vi.spyOn(bcrypt, 'hash').mockRejectedValueOnce(Promise.resolve(new Error()))
+    const promise = sut.encrypt('any_value')
+    await expect(promise).rejects.toThrow()
+  })
 })
