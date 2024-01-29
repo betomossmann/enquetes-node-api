@@ -30,19 +30,19 @@
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "sort-keys-fix/sort-keys-fix": "warn",
-        "@typescript-eslint/no-unused-vars": "warn",
-        "@typescript-eslint/strict-boolean-expressions": "off",
+        "@typescript-eslint/restrict-template-expressions": "off",
+        "@typescript-eslint/space-before-function-paren": "off",
         "@typescript-eslint/consistent-type-definitions": "off",
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "@typescript-eslint/prefer-nullish-coalescing": "off",
+        "@typescript-eslint/no-misused-promises": "off",
         "@typescript-eslint/no-unsafe-argument": "off",
         "@typescript-eslint/comma-spacing": "off",
         "@typescript-eslint/return-await": "off",
-        "@typescript-eslint/restrict-template-expressions": "off",
-        "@typescript-eslint/prefer-nullish-coalescing": "off",
-        "@typescript-eslint/space-before-function-paren": "off",
-        "@typescript-eslint/no-misused-promises": "off",
         "@typescript-eslint/no-namespace": "off",
-        "import/export": "off"
+        "import/export": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "sort-keys-fix/sort-keys-fix": "warn"
       }
     }
   ]
