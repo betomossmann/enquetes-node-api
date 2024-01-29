@@ -1,8 +1,8 @@
 node_modules
-setup
 dist
 coverage
 ./data
 requirements
-vitest.config.ts
-tsconfig-build.json
+.vscode
+.env
+*.js

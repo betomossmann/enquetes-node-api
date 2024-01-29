@@ -6,7 +6,7 @@
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "simple-import-sort/imports": [
           "error",
@@ -28,7 +28,7 @@
       }
     },
     {
-      "files": ["*.ts", "*.tsx"],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
         "sort-keys-fix/sort-keys-fix": "warn",
         "@typescript-eslint/no-unused-vars": "warn",
