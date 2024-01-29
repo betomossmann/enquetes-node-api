@@ -1,12 +1,17 @@
 {
-  "extends": "standard-with-typescript",
+  "env": {
+    "commonjs": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["standard-with-typescript", "prettier"],
   "plugins": ["simple-import-sort", "sort-keys-fix"],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": ["*.ts"],
       "rules": {
         "simple-import-sort/imports": [
           "error",
@@ -28,7 +33,7 @@
       }
     },
     {
-      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "files": ["*.ts"],
       "rules": {
         "@typescript-eslint/restrict-template-expressions": "off",
         "@typescript-eslint/space-before-function-paren": "off",
