@@ -63,8 +63,5 @@
   },
   "engines": {
     "node": ">=14.x <=18.x"
-  },
-  "_moduleAliases": {
-    "@": "dist"
   }
 }

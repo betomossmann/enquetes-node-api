@@ -1,6 +1,7 @@
 module.exports = {
   roots: ['<rootDir>/tests'],
   collectCoverageFrom: ['<rootDir>/src/**/*.ts', '!<rootDir>/src/main/**', '!<rootDir>/src/**/index.ts'],
+  watchPathIgnorePatterns: ['globalConfig'],
   coverageDirectory: 'coverage',
   coverageProvider: 'babel',
   testEnvironment: 'node',
