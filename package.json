@@ -4,7 +4,7 @@
   "description": "API in NodeJs, Typescript using TDD, Clean Architecture, Design Patterns and SOLID",
   "main": "index.js",
   "scripts": {
-    "test": "vitest --passWithNoTests --silent",
+    "test": "vitest --passWithNoTests --silent --no-threads",
     "test:u": "vitest -u",
     "test:ui": "vitest --ui",
     "test:staged": "vitest related --run",
@@ -44,10 +44,12 @@
     "lint-staged": "^15.2.0",
     "typescript": "^5.3.3",
     "vite-tsconfig-paths": "^4.3.1",
-    "vitest": "^1.2.2"
+    "vitest": "^1.2.2",
+    "vitest-mongodb": "^0.0.5"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "mongodb": "^6.3.0",
     "validator": "^13.11.0"
   }
 }

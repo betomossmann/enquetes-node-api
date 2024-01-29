@@ -1,4 +1,5 @@
 node_modules
+setup
 dist
 coverage
 ./data
