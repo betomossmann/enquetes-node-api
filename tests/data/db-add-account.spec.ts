@@ -4,8 +4,6 @@ import { DbAddAccount } from '@/data/usecases'
 import { type AccountModel } from '@/domain/models'
 import { type AddAccountModel } from '@/domain/usecases'
 
-import { describe, expect, it, vi } from 'vitest'
-
 type SutTypes = {
   sut: DbAddAccount
   encryptStub: Encrypter
@@ -50,7 +48,7 @@ const makeSut = (): SutTypes => {
 describe('DbAddAccount Usecase', () => {
   it('Should call Encrypter with correct password', async () => {
     const { sut, encryptStub } = makeSut()
-    const encryptSpy = vi.spyOn(encryptStub, 'encrypt')
+    const encryptSpy = jest.spyOn(encryptStub, 'encrypt')
     const accountData = {
       email: 'valid_email@mail.com',
       name: 'valid_name',
@@ -62,7 +60,7 @@ describe('DbAddAccount Usecase', () => {
 
   it('Should throw if Encrypter throws', async () => {
     const { sut, encryptStub } = makeSut()
-    vi.spyOn(encryptStub, 'encrypt').mockReturnValueOnce(
+    jest.spyOn(encryptStub, 'encrypt').mockReturnValueOnce(
       new Promise((resolve, reject) => {
         reject(new Error())
       })
@@ -78,7 +76,7 @@ describe('DbAddAccount Usecase', () => {
 
   it('Should call AddAccountRepository with correct values', async () => {
     const { sut, addAccountRepositoryStub } = makeSut()
-    const addSpy = vi.spyOn(addAccountRepositoryStub, 'add')
+    const addSpy = jest.spyOn(addAccountRepositoryStub, 'add')
     const accountData = {
       email: 'valid_email@mail.com',
       name: 'valid_name',
@@ -94,7 +92,7 @@ describe('DbAddAccount Usecase', () => {
 
   it('Should throw if AddAccountRepository throws', async () => {
     const { sut, addAccountRepositoryStub } = makeSut()
-    vi.spyOn(addAccountRepositoryStub, 'add').mockReturnValueOnce(
+    jest.spyOn(addAccountRepositoryStub, 'add').mockReturnValueOnce(
       new Promise((resolve, reject) => {
         reject(new Error())
       })
