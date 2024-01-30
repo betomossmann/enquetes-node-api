@@ -3,7 +3,7 @@ import { EmailValidatorAdapter } from '@/infra/validators'
 import validator from 'validator'
 
 jest.mock('validator', () => ({
-  isEmail(): boolean {
+  isEmail (): boolean {
     return true
   }
 }))

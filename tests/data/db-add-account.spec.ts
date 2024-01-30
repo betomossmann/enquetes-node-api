@@ -12,7 +12,7 @@ type SutTypes = {
 
 const makeAddAccountRepository = (): AddAccountRepository => {
   class AddAccountRepositoryStub implements AddAccountRepository {
-    async add(account: AddAccountModel): Promise<AccountModel> {
+    async add (account: AddAccountModel): Promise<AccountModel> {
       const fakeAccount = {
         email: 'valid_email@mail.com',
         id: 'valid_id',
@@ -29,7 +29,7 @@ const makeAddAccountRepository = (): AddAccountRepository => {
 
 const makeSut = (): SutTypes => {
   class EncrypterStub {
-    async encrypt(value: string): Promise<string> {
+    async encrypt (value: string): Promise<string> {
       return new Promise(resolve => {
         resolve('hashed_password')
       })

@@ -24,7 +24,8 @@ export const MongoHelper = {
     return this.client.db().collection(name)
   },
 
-  map: <T>(collections: any[]): T[] => collections.map((collection) => MongoHelper.assign<T>(collection)),
+  map: <T>(collections: any[]): T[] =>
+    collections.map(collection => MongoHelper.assign<T>(collection)),
 
   objectId: (id?: string): ObjectId => new ObjectId(id),
 

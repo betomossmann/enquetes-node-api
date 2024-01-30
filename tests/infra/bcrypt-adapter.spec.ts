@@ -4,7 +4,7 @@ import { throwError } from '@/tests/domain/mocks'
 import bcrypt from 'bcrypt'
 
 jest.mock('bcrypt', () => ({
-  async hash(): Promise<string> {
+  async hash (): Promise<string> {
     return 'hash'
   }
 }))
