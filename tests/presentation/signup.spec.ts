@@ -28,7 +28,7 @@ const makeAddAccount = (): AddAccount => {
         name: 'valid_name',
         password: 'valid_password'
       }
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         resolve(fakeAccount)
       })
     }

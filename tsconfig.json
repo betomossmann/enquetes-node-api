@@ -1,18 +1,20 @@
 {
   "compilerOptions": {
+    "incremental": true,
     "outDir": "dist",
-    "module": "CommonJS",
-    "target": "ES2021",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
     "rootDirs": ["src", "tests"],
+    "target": "es2021",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
     "baseUrl": "src",
     "paths": {
-      "@/tests/*": ["../tests/*"],
-      "@/*": ["*"]
+      "@/*": ["*"],
+      "@/tests/*": ["../tests/*"]
     }
   },
-  "include": ["src", "tests"],
-  "exclude": []
+  "include": ["src", "tests"]
 }

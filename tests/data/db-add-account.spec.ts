@@ -19,7 +19,7 @@ const makeAddAccountRepository = (): AddAccountRepository => {
         name: 'valid_name',
         password: 'hashed_password'
       }
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         resolve(fakeAccount)
       })
     }
@@ -30,7 +30,7 @@ const makeAddAccountRepository = (): AddAccountRepository => {
 const makeSut = (): SutTypes => {
   class EncrypterStub {
     async encrypt(value: string): Promise<string> {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         resolve('hashed_password')
       })
     }
