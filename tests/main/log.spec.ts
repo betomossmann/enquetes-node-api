@@ -1,6 +1,8 @@
 import { LogControllerDecorator } from '@/main/decorators'
 import { type Controller, type HttpRequest, type HttpResponse } from '@/presentation/protocols'
 
+import { faker } from '@faker-js/faker'
+
 type SutTypes = {
   sut: LogControllerDecorator
   controllerStub: Controller
@@ -35,13 +37,32 @@ describe('LogController Decorator', () => {
     const handleSpy = jest.spyOn(controllerStub, 'handle')
     const httpRequest = {
       body: {
-        email: 'any_email',
-        name: 'any_name',
-        password: 'any_password',
-        passwordConfirmation: 'any_password'
+        email: faker.internet.email(),
+        name: faker.person.fullName(),
+        password: faker.internet.password(),
+        passwordConfirmation: faker.internet.password()
       }
     }
     await sut.handle(httpRequest)
     expect(handleSpy).toHaveBeenCalledWith(httpRequest)
+  })
+
+  it('Should return the same result of the controller', async () => {
+    const { sut } = makeSut()
+    const httpRequest = {
+      body: {
+        email: faker.internet.email(),
+        name: faker.person.fullName(),
+        password: faker.internet.password(),
+        passwordConfirmation: faker.internet.password()
+      }
+    }
+    const httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse).toEqual({
+      body: {
+        name: 'any_name'
+      },
+      statusCode: 200
+    })
   })
 })
